@@ -1,3 +1,119 @@
+body{
+
+margin:0;
+overflow:hidden;
+
+background:linear-gradient(
+45deg,
+#0f2027,
+#203a43,
+#2c5364
+);
+
+font-family:Arial;
+color:white;
+text-align:center;
+
+}
+
+.title{
+
+font-size:40px;
+margin-top:40px;
+
+}
+
+.menu{
+
+position:absolute;
+left:40px;
+top:150px;
+
+display:flex;
+flex-direction:column;
+
+}
+
+button{
+
+padding:15px;
+margin:10px;
+
+font-size:18px;
+
+background:#00ffff;
+border:none;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
+background:#ff00ff;
+transform:scale(1.1);
+
+}
+
+#info{
+
+position:absolute;
+right:40px;
+top:200px;
+
+width:300px;
+
+}
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+const renderer = new THREE.WebGLRenderer();
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
+const geometry = new THREE.BoxGeometry();
+
+const material = new THREE.MeshBasicMaterial({
+color:0x00ffff,
+wireframe:true
+});
+
+const cube = new THREE.Mesh(geometry,material);
+
+scene.add(cube);
+
+camera.position.z = 5;
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+cube.rotation.y += 0.01;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+function showSkills(){
+
+document.getElementById("info").innerHTML =
+"Java: 80% <br> Python: 75% <br> CSS: 85%";
+
+}
+
+function showProjects()…
 <!DOCTYPE html>
 <html>
 
