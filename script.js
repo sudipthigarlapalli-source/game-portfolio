@@ -1,68 +1,60 @@
-const scene = new THREE.Scene()
+const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
 75,
 window.innerWidth/window.innerHeight,
 0.1,
 1000
-)
+);
 
-const renderer = new THREE.WebGLRenderer()
+const renderer = new THREE.WebGLRenderer();
 
-renderer.setSize(window.innerWidth,window.innerHeight)
+renderer.setSize(window.innerWidth,window.innerHeight);
 
-document.body.appendChild(renderer.domElement)
+document.body.appendChild(renderer.domElement);
 
-const light = new THREE.HemisphereLight(0xffffff,0x444444)
-scene.add(light)
+const geometry = new THREE.BoxGeometry();
 
-const loader = new THREE.GLTFLoader()
+const material = new THREE.MeshBasicMaterial({
+color:0x00ffff,
+wireframe:true
+});
 
-let character
+const cube = new THREE.Mesh(geometry,material);
 
-loader.load("character.glb",function(gltf){
+scene.add(cube);
 
-character = gltf.scene
-
-scene.add(character)
-
-})
-
-camera.position.z = 3
+camera.position.z = 5;
 
 function animate(){
 
-requestAnimationFrame(animate)
+requestAnimationFrame(animate);
 
-if(character){
+cube.rotation.y += 0.01;
 
-character.rotation.y += 0.01
-
-}
-
-renderer.render(scene,camera)
+renderer.render(scene,camera);
 
 }
 
-animate()
+animate();
 
 function showSkills(){
 
 document.getElementById("info").innerHTML =
-"<h2>Skills</h2> Java ████████ 80% <br> Python ███████ 70% <br> CSS █████████ 90%"
+"Java: 80% <br> Python: 75% <br> CSS: 85%";
 
 }
 
 function showProjects(){
 
 document.getElementById("info").innerHTML =
-"<h2>Projects</h2> AI Chatbot <br> Portfolio Website <br> Weather App"
+"Project 1: Portfolio Website <br> Project 2: AI Chatbot <br> Project 3: Weather App";
 
 }
 
 function showContact(){
 
 document.getElementById("info").innerHTML =
-"<h2>Contact</h2> Email: your@email.com <br> GitHub: github.com/yourname <br> LinkedIn: linkedin.com/in/yourname"
+"Email: your@email.com <br> GitHub: github.com/yourname <br> LinkedIn: linkedin.com/in/yourname";
 
 }
