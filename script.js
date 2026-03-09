@@ -63,6 +63,6 @@ document.getElementById("info").innerHTML =
 function showContact(){
 
 document.getElementById("info").innerHTML =
-"<h2>Contact</h2> Email: sudipthigarlapalli@email.com <br> GitHub: github.com/sudipthigarlapalli-source <br> LinkedIn: linkedin.com/in/Garlapalli Sudipthi"
+"<h2>Contact</h2> Email: your@email.com <br> GitHub: github.com/yourname <br> LinkedIn: linkedin.com/in/yourname"
 
 }
